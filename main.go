@@ -13,5 +13,5 @@ func main() {
 }
 
 func ping(c *gin.Context) {
-	c.JSON(http.StatusOK, "Hello ping v1")
+	c.JSON(http.StatusOK, "Hello ping v3. This is from pong v2.")
 }
