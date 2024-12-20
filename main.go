@@ -2,16 +2,15 @@ package main
 
 import (
 	"net/http"
-
-	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	router := gin.Default()
-	router.GET("/ping", ping)
-	router.Run(":80")
+	http.HandleFunc("/ping", ping)
+
+	http.ListenAndServe(":80", nil)
 }
 
-func ping(c *gin.Context) {
-	c.JSON(http.StatusOK, "Hello ping v3. This is from pong v2.")
+func ping(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Hello ping! Pong has added some success test cases!"))
 }
